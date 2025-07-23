@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process'
 import process from 'node:process'
 
 import { getDatabaseDSN, initConfig, useConfig } from '../packages/common/src/node'
-import { initLogger, useLogger } from '../packages/logg/src'
+import { initLogger, useLogger } from '@tg-search/logg'
 
 (async () => {
   initLogger()

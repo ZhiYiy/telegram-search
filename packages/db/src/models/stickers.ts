@@ -49,6 +49,11 @@ export async function recordStickers(stickers: CoreMessageMediaSticker[]) {
     // TODO: Emoji
     }))
 
+  // 如果没有有效的贴纸数据需要存储，直接返回成功
+  if (dataToInsert.length === 0) {
+    return
+  }
+
   return withDb(async db => db
     .insert(stickersTable)
     .values(dataToInsert)

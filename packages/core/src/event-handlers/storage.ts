@@ -75,9 +75,16 @@ export function registerStorageEventHandlers(ctx: CoreContext) {
 
     let dbMessages: DBRetrievalMessages[] = []
     if (params.useVector) {
-      const { embeddings } = (await embedContents([params.content])).expect('Failed to embed content')
+      try {
+        const { embeddings } = (await embedContents([params.content])).expect('Failed to embed content')
 
-      dbMessages = (await retrieveMessages(params.chatId, { embedding: embeddings[0], text: params.content }, params.pagination)).expect('Failed to retrieve messages')
+        dbMessages = (await retrieveMessages(params.chatId, { embedding: embeddings[0], text: params.content }, params.pagination)).expect('Failed to retrieve messages')
+      }
+      catch (error) {
+        logger.withError(error).warn('向量搜索失败，回退到文本搜索')
+        // 向量搜索失败时，回退到文本搜索
+        dbMessages = (await retrieveMessages(params.chatId, { text: params.content }, params.pagination)).expect('Failed to retrieve messages')
+      }
     }
     else {
       dbMessages = (await retrieveMessages(params.chatId, { text: params.content }, params.pagination)).expect('Failed to retrieve messages')

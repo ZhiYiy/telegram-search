@@ -124,8 +124,8 @@ export function createMessageService(ctx: CoreContext) {
           })
 
         if (messages.length === 0) {
-          logger.error('Get messages failed or returned empty data')
-          return Err(new Error('Get messages failed or returned empty data'))
+          logger.debug('No more messages available')
+          return Err(new Error('No more messages available'))
         }
 
         for (const message of messages) {

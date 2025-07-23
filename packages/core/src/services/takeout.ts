@@ -175,7 +175,7 @@ export function createTakeoutService(ctx: CoreContext) {
 
         // Type safe check
         if ('messages' in result && result.messages.length === 0) {
-          emitError(taskId, new Error('Get messages failed or returned empty data'))
+          logger.debug('No more messages available, finishing takeout')
           break
         }
 

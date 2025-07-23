@@ -68,7 +68,8 @@ export function afterConnectedEventHandler(
     registry.register('media', createMediaResolver(ctx))
     registry.register('user', createUserResolver(ctx))
     registry.register('link', createLinkResolver())
-    registry.register('embedding', createEmbeddingResolver())
+    // TODO: 暂时禁用 embedding，直到配置正确的 API Key 或使用其他提供商
+    // registry.register('embedding', createEmbeddingResolver())
     registry.register('jieba', createJiebaResolver())
 
     registerMessageEventHandlers(ctx)(messageService)

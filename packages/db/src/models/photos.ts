@@ -41,6 +41,11 @@ export async function recordPhotos(media: CoreMessageMediaPhoto[]) {
       } satisfies DBInsertPhoto),
     )
 
+  // 如果没有有效的媒体数据需要存储，直接返回成功
+  if (dataToInsert.length === 0) {
+    return
+  }
+
   return withDb(async db => db
     .insert(photosTable)
     .values(dataToInsert)

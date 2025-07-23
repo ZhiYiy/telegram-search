@@ -132,7 +132,7 @@ export async function withDb<T>(
     return Ok(await fn(useDrizzle()))
   }
   catch (error) {
-    return Err<T>((error instanceof Error) ? error.cause : error)
+    return Err<T>(error)
   }
 }
 

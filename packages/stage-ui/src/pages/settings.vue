@@ -14,6 +14,7 @@ const websocketStore = useWebsocketStore()
 const embeddingProviderOptions = [
   { label: 'OpenAI', value: 'openai' },
   { label: 'Ollama', value: 'ollama' },
+  { label: 'DashScope', value: 'dashscope' },
 ]
 
 async function updateConfig() {

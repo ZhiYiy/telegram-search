@@ -39,6 +39,7 @@ export async function recordMessages(messages: CoreMessage[]) {
         content_vector_1024: sql`COALESCE(excluded.content_vector_1024, ${chatMessagesTable.content_vector_1024})`,
         content_vector_1536: sql`COALESCE(excluded.content_vector_1536, ${chatMessagesTable.content_vector_1536})`,
         content_vector_768: sql`COALESCE(excluded.content_vector_768, ${chatMessagesTable.content_vector_768})`,
+        content_vector_2048: sql`COALESCE(excluded.content_vector_2048, ${chatMessagesTable.content_vector_2048})`,
 
         // Jieba tokens: update only if new array is not empty
         jieba_tokens: sql`CASE 

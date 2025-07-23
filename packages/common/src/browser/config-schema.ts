@@ -10,12 +10,14 @@ export enum SocksType {
 export enum EmbeddingProvider {
   OPENAI = 'openai',
   OLLAMA = 'ollama',
+  DASHSCOPE = 'dashscope',
 }
 
 export enum EmbeddingDimension {
   DIMENSION_1536 = 1536,
   DIMENSION_1024 = 1024,
   DIMENSION_768 = 768,
+  DIMENSION_2048 = 2048,
 }
 
 export enum DatabaseType {

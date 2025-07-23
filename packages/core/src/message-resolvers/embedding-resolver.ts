@@ -21,7 +21,8 @@ export function createEmbeddingResolver(): MessageResolver {
         message => message.content
           && (message.vectors.vector1024?.length === 0
             || message.vectors.vector1536?.length === 0
-            || message.vectors.vector768?.length === 0),
+            || message.vectors.vector768?.length === 0
+            || message.vectors.vector2048?.length === 0),
       )
 
       if (messages.length === 0)
@@ -53,6 +54,9 @@ export function createEmbeddingResolver(): MessageResolver {
             break
           case EmbeddingDimension.DIMENSION_768:
             message.vectors.vector768 = embeddings[index]
+            break
+          case EmbeddingDimension.DIMENSION_2048:
+            message.vectors.vector2048 = embeddings[index]
             break
           default:
             throw new Error(`Unsupported embedding dimension: ${dimension}`)

@@ -53,13 +53,16 @@ api:
     #   password: ''     # Optional password for proxy auth
   # Embedding settings
   embedding:
-    # Embedding provider (openai or ollama)
-    provider: openai
+    # Embedding provider (openai, ollama, dashscope)
+    provider: dashscope
     # Embedding model
-    model: text-embedding-3-small
+    model: text-embedding-v4
     # API key for provider
-    apiKey: your_openai_api_key
-    # Optional, available dimensions: 1536, 1024, 768. Default dimension is 1536. #If using gemini-embedding-exp-03-07, choose 768
-    dimension: 1536
+    apiKey: sk-c8b4b6ccacb4474984884ef16757e47b
+    # Optional, available dimensions: 1536, 1024, 768, 2048. Default dimension is 1536. 
+    # For DashScope API, you can use 2048 dimension
+    dimension: 2048
     # Optional, for custom API providers
-    apiBase: 'https://api.openai.com/v1'
+    # For DashScope API, use: https://dashscope.aliyuncs.com/compatible-mode/v1
+    # For OpenAI API, use: https://api.openai.com/v1
+    apiBase: 'https://dashscope.aliyuncs.com/compatible-mode/v1'

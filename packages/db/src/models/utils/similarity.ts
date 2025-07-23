@@ -18,6 +18,9 @@ export function getSimilaritySql(dimension: EmbeddingDimension, embedding: numbe
     case EmbeddingDimension.DIMENSION_768:
       similarity = sql<number>`(1 - (${cosineDistance(chatMessagesTable.content_vector_768, embedding)}))`
       break
+    case EmbeddingDimension.DIMENSION_2048:
+      similarity = sql<number>`(1 - (${cosineDistance(chatMessagesTable.content_vector_2048, embedding)}))`
+      break
     default:
       throw new Error(`Unsupported embedding dimension: ${dimension}`)
   }

@@ -19,9 +19,11 @@ export const stickersTable = pgTable('stickers', {
   description_vector_1536: vector({ dimensions: 1536 }),
   description_vector_1024: vector({ dimensions: 1024 }),
   description_vector_768: vector({ dimensions: 768 }),
+  description_vector_2048: vector({ dimensions: 2048 }),
 }, table => [
   uniqueIndex('stickers_platform_file_id_unique').on(table.platform, table.file_id),
   index('stickers_description_vector_1536_index').using('hnsw', table.description_vector_1536.op('vector_cosine_ops')),
   index('stickers_description_vector_1024_index').using('hnsw', table.description_vector_1024.op('vector_cosine_ops')),
   index('stickers_description_vector_768_index').using('hnsw', table.description_vector_768.op('vector_cosine_ops')),
+  index('stickers_description_vector_2048_index').using('hnsw', table.description_vector_2048.op('vector_cosine_ops')),
 ])

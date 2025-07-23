@@ -28,7 +28,7 @@ watch(keywordDebounced, (newKeyword) => {
     content: newKeyword,
     useVector: true,
     pagination: {
-      limit: 10,
+      limit: 100,
       offset: 0,
     },
   })

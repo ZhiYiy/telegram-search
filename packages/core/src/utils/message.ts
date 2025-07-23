@@ -52,6 +52,7 @@ export interface CoreMessageVector {
   vector1536?: number[]
   vector1024?: number[]
   vector768?: number[]
+  vector2048?: number[]
 }
 
 export function convertToCoreMessage(message: Api.Message): Result<CoreMessage> {
@@ -137,6 +138,7 @@ export function convertToCoreMessage(message: Api.Message): Result<CoreMessage> 
         vector1536: [],
         vector1024: [],
         vector768: [],
+        vector2048: [],
       },
       jiebaTokens: [],
       platformTimestamp: message.date,

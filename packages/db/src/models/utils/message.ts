@@ -41,6 +41,7 @@ export function convertToCoreMessageFromDB(message: DBSelectMessage): CoreMessag
       vector1536: message.content_vector_1536 || [],
       vector1024: message.content_vector_1024 || [],
       vector768: message.content_vector_768 || [],
+      vector2048: message.content_vector_2048 || [],
     },
 
     jiebaTokens: message.jieba_tokens as unknown as string[],
@@ -75,6 +76,10 @@ export function convertToDBInsertMessage(message: CoreMessage): DBInsertMessage 
 
   if (message.vectors.vector768?.length) {
     msg.content_vector_768 = message.vectors.vector768
+  }
+
+  if (message.vectors.vector2048?.length) {
+    msg.content_vector_2048 = message.vectors.vector2048
   }
 
   if (message.jiebaTokens?.length) {
